@@ -6,14 +6,27 @@ with orders as (
 
 ),
 
+customers as (
+
+    select * from {{ ref('stg_customers') }}
+
+),
+
 final as (
     select
-        customer_id,
+        c.id as customer_id,
+        c.first_name,
+        c.last_name,
         count(*) as order_count,
-        sum(order_total) as lifetime_value,
-        max(created_at) as last_order_at
-    from orders
-    group by customer_id
+        sum(o.order_total) as lifetime_value,
+        max(o.created_at) as last_order_at
+    from orders as o
+    inner join customers as c
+        on o.customer_id = c.id
+    group by
+        c.id,
+        c.first_name,
+        c.last_name
 
 )
 
