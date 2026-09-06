@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: Cleaned order records used by downstream marts.
+    columns:
+      - name: order_id
+        description: Unique order identifier.
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: Customer who placed the order.
+        tests:
+          - not_null
+      - name: order_total
+        description: Order amount.
+      - name: created_at
+        description: Timestamp when the order was created.
