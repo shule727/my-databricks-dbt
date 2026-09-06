@@ -7,6 +7,7 @@ renamed as (
         id,
         first_name,
         last_name,
+        company_id,
         email,
         cast(created_at as timestamp) as created_at
     from source_data

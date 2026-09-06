@@ -2,10 +2,11 @@ version: 2
 
 sources:
   - name: raw
-    catalog: main
+    catalog: workspace
     schema: raw
     tables:
       - name: orders
+      - name: companies
 
 models:
   - name: stg_orders
@@ -26,10 +27,27 @@ models:
       - name: last_name
         data_tests:
           - not_null
+      - name: company_id
+        data_tests:
+          - not_null
       - name: email
         data_tests:
           - not_null
           - unique
+      - name: created_at
+        data_tests:
+          - not_null
+  - name: stg_companies
+    columns:
+      - name: id
+        data_tests:
+          - not_null
+          - unique
+      - name: company_name
+        data_tests:
+          - not_null
+      - name: industry
+      - name: country
       - name: created_at
         data_tests:
           - not_null

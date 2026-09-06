@@ -5,7 +5,7 @@ my_databricks:
       host: dbc-45b03554-c8e1.cloud.databricks.com
       http_path: /sql/1.0/warehouses/18a1a4dd839c5b00
       schema: ante_dev
-      threads: 1
+      threads: 8
       token: "{{ env_var('DATABRICKS_TOKEN') }}"
       type: databricks
   target: dev
