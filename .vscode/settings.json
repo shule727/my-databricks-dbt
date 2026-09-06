@@ -1,0 +1,32 @@
+{
+    "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
+    "sqlfluff.dialect": "databricks",
+    "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff",
+    "sqlfluff.format.enabled": true,
+    "sqlfluff.format.languages": [
+        "sql",
+        "jinja-sql",
+        "dbt",
+        "dbt-sql"
+    ],
+    "sqlfluff.linter.run": "onSave",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.sqlfluff": "always"
+    },
+    "[sql]": {
+        "editor.defaultFormatter": "sqlfluff.vscode-sqlfluff",
+        "editor.formatOnSave": true
+    },
+    "[jinja-sql]": {
+        "editor.defaultFormatter": "sqlfluff.vscode-sqlfluff",
+        "editor.formatOnSave": true
+    },
+    "[dbt]": {
+        "editor.defaultFormatter": "sqlfluff.vscode-sqlfluff",
+        "editor.formatOnSave": true
+    },
+    "[dbt-sql]": {
+        "editor.defaultFormatter": "sqlfluff.vscode-sqlfluff",
+        "editor.formatOnSave": true
+    }
+}

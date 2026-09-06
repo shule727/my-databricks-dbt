@@ -1,8 +1,19 @@
-{{ config(materialized='view') }}
+with source_data as (
 
-select
-    cast(order_id as int) as order_id,
-    cast(customer_id as int) as customer_id,
-    cast(order_total as decimal(10, 2)) as order_total,
-    cast(created_at as timestamp) as created_at
-from {{ ref('orders') }}
+    select * from {{ ref('orders') }}
+
+),
+
+renamed as (
+
+    select
+        cast(order_id as bigint) as order_id,
+        cast(customer_id as bigint) as customer_id,
+        cast(order_total as decimal(18, 2)) as order_total,
+        cast(created_at as timestamp) as created_at
+
+    from source_data
+
+)
+
+select * from renamed
